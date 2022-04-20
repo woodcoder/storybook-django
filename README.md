@@ -184,6 +184,29 @@ export const ReactDemoStory = () => (
 
 We are working on Vue support. Please refer to [Usage with Vue #7](https://github.com/torchbox/storybook-django/issues/7) in the meantime, and provide feedback.
 
+#### Vue 2
+
+```js
+import { DjangoPattern } from 'storybook-django/src/vue2';
+
+export default {
+  args: {
+    quote: "What's up?",
+    attribution: '4 Non Blondes',
+  }
+};
+
+const template = 'patterns/components/quote_block/quote_block.html';
+
+const Template = (args, { argTypes }) => ({
+  components: { DjangoPattern },
+  props: Object.keys(argTypes),
+  template: `<DjangoPattern template="${template}" :context="{ ...$props }" />`,
+});
+
+export const Base = Template.bind({});
+```
+
 ### Usage with other frameworks
 
 storybook-django’s implementation is largely framework-agnostic, and should work equally as well with Storybook’s HTML and Web Components support.
