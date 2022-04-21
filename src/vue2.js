@@ -1,9 +1,19 @@
 import { renderPattern, simulateLoading } from './storybook-django';
 
-const getTemplateName = (template, filename) =>
-  template ||
-  filename?.replace(/.+\/templates\//, '').replace(/\.stories\..+$/, '.html') ||
-  'template-not-found';
+const getTemplateName = (template, filename) => {
+  if (template) {
+    return template;
+  }
+
+  if (filename) {
+    return filename
+      .replace(/.+\/templates\//, '')
+      .replace(/\.stories\..+$/, '.html')
+      .toLowerCase();
+  }
+
+  return 'Template not found!';
+};
 
 export const DjangoPattern = {
   name: 'DjangoPattern',
