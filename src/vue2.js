@@ -33,6 +33,7 @@ export const DjangoPattern = {
   },
   watch: {
     context: {
+      deep: true,
       immediate: true,
       handler (val) {
         this.getRenderedPattern()

@@ -201,7 +201,7 @@ const template = 'patterns/components/quote_block/quote_block.html';
 const Template = (args, { argTypes }) => ({
   components: { DjangoPattern },
   props: Object.keys(argTypes),
-  template: `<DjangoPattern template="${template}" :context="{ ...$props }" />`,
+  template: `<DjangoPattern template="${template}" :context="$props" />`,
 });
 
 export const Base = Template.bind({});
