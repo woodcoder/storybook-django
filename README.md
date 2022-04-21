@@ -189,22 +189,19 @@ We are working on Vue support. Please refer to [Usage with Vue #7](https://githu
 ```js
 import { DjangoPattern } from 'storybook-django/src/vue2';
 
-export default {
-  args: {
-    quote: "What's up?",
-    attribution: '4 Non Blondes',
-  }
-};
+export default {};
 
 const template = 'patterns/components/quote_block/quote_block.html';
-
-const Template = (args, { argTypes }) => ({
+export const Base = (args, { argTypes }) => ({
   components: { DjangoPattern },
   props: Object.keys(argTypes),
   template: `<DjangoPattern template="${template}" :context="$props" />`,
 });
 
-export const Base = Template.bind({});
+Base.args = {
+  quote: "What's up?",
+  attribution: '4 Non Blondes',
+};
 ```
 
 ### Usage with other frameworks
